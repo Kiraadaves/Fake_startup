@@ -1,10 +1,8 @@
 
 import Dropdown from "./Dropdown";
 
-const Search = ({value, theme}) => {
-    const handleSearchChange = (e) => {
-       
-    }
+const Search = ({value, theme, handleSearch}) => {
+
     
     return (
       <div className="px-20 relative mt-12">
@@ -33,7 +31,7 @@ const Search = ({value, theme}) => {
             placeholder="Search for a country..."
             className="w-80 px-4 py-2 bg-transparent  rounded-l focus:outline-none"
             value={value}
-            onChange={handleSearchChange}
+            onChange={handleSearch}
           />
             </form>
             <div className={`absolute right-20 top-0  `}>
