@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Card = ({ data }) => {
+
+const Card = ({ data}) => {
   return (
-    <div className="grid md:grid-cols-4 gap-12 md:px-20 my-12">
+    <div className={` grid md:grid-cols-4 gap-12 md:px-20 my-12`}>
       {data.map((country) => (
         <Link key={country.name} to={`/details/${country.name}`}>
           <div className="border-solid border-2 pb-14 shadow-lg rounded-lg">
-            {console.log(`Navigating to: /details/${country.name}`)}
+            
             <img
               src={country.flags.png}
               alt="flag"

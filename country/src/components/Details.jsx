@@ -1,28 +1,30 @@
 import { Link, useParams } from "react-router-dom";
 import Header from "./Header";
-import { useState, useEffect } from "react";
-import country from './data.json'
+import { useState, useEffect, useContext } from "react";
+import country from "./data.json";
+import { ThemeContext } from "../ThemeContext";
 
 const Details = () => {
   const { name } = useParams();
   const [item, setItem] = useState(null);
-  
+  const theme = useContext(ThemeContext);
+  console.log(theme);
   useEffect(() => {
-    fetch({ country })
-      console.log(country)
+    fetch({ country });
     const selectedItem = country.find((item) => item.name === name);
-    setItem(selectedItem)
-  }, [name])
+    setItem(selectedItem);
+  }, [name]);
 
   if (!item) {
     return <div>Loading data...</div>;
   }
-  
-  
+
   return (
-    <div >
+    <div className={`details ${theme ? "dark" : "light"}`}>
       <Header
-         />
+        
+        text={`${theme ? "Dark Mode" : "Light Mode"}`}
+      />
       <div className="mt-16 md:px-20">
         <Link to="/">
           <button>Back</button>
@@ -37,16 +39,19 @@ const Details = () => {
           <div className="mt-10 grid grid-cols-2 gap-20">
             <div className="flex flex-col gap-6">
               <h1 className="font-bold">
-                Native Name: <span className="font-normal">{item.nativeName}</span>
+                Native Name:{" "}
+                <span className="font-normal">{item.nativeName}</span>
               </h1>
               <h1 className="font-bold">
-                Population: <span className="font-normal">{item.population}</span>
+                Population:{" "}
+                <span className="font-normal">{item.population}</span>
               </h1>
               <h1 className="font-bold">
                 Region: <span className="font-normal">{item.region}</span>
               </h1>
               <h1 className="font-bold">
-                Sub Region: <span className="font-normal">{item.subregion}</span>
+                Sub Region:{" "}
+                <span className="font-normal">{item.subregion}</span>
               </h1>
               <h1 className="font-bold">
                 Capital: <span className="font-normal">{item.capital}</span>
@@ -54,7 +59,8 @@ const Details = () => {
             </div>
             <div className="flex flex-col gap-6">
               <h1 className="font-bold">
-                Top Level Domain: <span className="font-normal">{item.topLevelDomain}</span>
+                Top Level Domain:{" "}
+                <span className="font-normal">{item.topLevelDomain}</span>
               </h1>
               <h1 className="font-bold">
                 Currencies: <span className="font-normal">{item.currency}</span>

@@ -9,12 +9,12 @@
   color: #858585;
 }
 
-.darkmodebg {
+.dark {
   background-color: #202c37;
   color: hsl(0, 0%, 100%);
 }
 
-.lightmodebg {
+.light {
   background-color: #fafafa;
   color: hsl(200, 15%, 8%);
 }

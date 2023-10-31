@@ -1,16 +1,18 @@
-import Card from './components/Card'
-import './App.css'
-import { useState } from 'react';
-import Header from './components/Header'
-import Search from './components/Search'
+import Card from "./components/Card";
+import "./App.css";
+import { useState } from "react";
+import Header from "./components/Header";
+import Search from "./components/Search";
 import data from "./components/data.json";
+import {  ThemeContext, ThemeProvider } from "./ThemeContext";
+import { useContext } from "react";
 
 
 function App() {
-  const [theme, setTheme] = useState(true);
+  const { theme, handleTheme } = useContext(ThemeContext);
   const [filteredData, setFilteredData] = useState(data);
   const [error, setError] = useState(false);
-
+  console.log(theme);
   const handleSearch = (e) => {
     if (e.target.value === "") {
       setFilteredData(data);
@@ -24,31 +26,29 @@ function App() {
       if (filtered.length === 0) {
         setError(true);
       } else {
-        setError(false)
+        setError(false);
       }
       setFilteredData(filtered);
     }
-  }
-  const handleTheme = () => {
-    setTheme(!theme);
-  }
-
+  };
   
+
   return (
-    <div className={`${theme ? "lightmodebg" : "darkmodebg"}`}>
-      <Header
-        handleTheme={handleTheme}
-        text={`${theme ? "Light Mode" : "Dark Mode"}`}
-      />
-      <Search theme={theme} handleSearch={handleSearch} />
-      {error ? (
-        <p className="text-red-500">No search results found.</p>
-      ) : (
-        <Card data={filteredData} />
-      )}
-      
-    </div>
+    <ThemeProvider>
+      <div className={`${theme ? "light" : "dark"}`}>
+        <Header
+          handleTheme={handleTheme}
+          text={`${theme ? "Light Mode" : "Dark Mode"}`}
+        />
+        <Search theme={theme} handleSearch={handleSearch} />
+        {error ? (
+          <p className="text-red-500">No search results found.</p>
+        ) : (
+            <Card data={filteredData} theme={theme} />
+        )}
+      </div>
+    </ThemeProvider>
   );
 }
 
-export default App
+export default App;

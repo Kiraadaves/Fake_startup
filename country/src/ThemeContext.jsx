@@ -1,7 +1,19 @@
+import { createContext, useState } from "react";
 
+export const ThemeContext = createContext();
 
-import { createContext } from "react";
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(true);
+  const handleTheme = () => {
+    setTheme(!theme);
+  };
+  console.log(theme, "count");
 
-const ThemeContext = createContext();
-
-export default ThemeContext;
+  const contextValue = { theme, handleTheme };
+  return (
+    <ThemeContext.Provider value={contextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+// eslint-disable-next-line react-refresh/only-export-components

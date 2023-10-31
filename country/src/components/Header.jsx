@@ -1,9 +1,15 @@
-const Header = ({text, handleTheme}) => {
+
+
+const Header = ({handleTheme, text}) => {
+  
   return (
-    <div className="border-b shadow-sm">
+    <div className={`border-b shadow-sm `}>
       <div className="flex justify-between items-center px-20 py-4">
         <h1 className="text-3xl font-extrabold">Where in the world?</h1>
-        <button onClick={handleTheme} className="font-bold flex gap-2 items-center">
+        <button
+          onClick={handleTheme}
+          className="font-bold flex gap-2 items-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
