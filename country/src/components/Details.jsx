@@ -1,14 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import Header from "./Header";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import country from "./data.json";
-import { ThemeContext } from "../ThemeContext";
+
 
 const Details = () => {
   const { name } = useParams();
   const [item, setItem] = useState(null);
-  const theme = useContext(ThemeContext);
-  console.log(theme);
+  
   useEffect(() => {
     fetch({ country });
     const selectedItem = country.find((item) => item.name === name);
@@ -20,10 +19,10 @@ const Details = () => {
   }
 
   return (
-    <div className={`details ${theme ? "dark" : "light"}`}>
+    <div className={`details `}>
       <Header
         
-        text={`${theme ? "Dark Mode" : "Light Mode"}`}
+        text={``}
       />
       <div className="mt-16 md:px-20">
         <Link to="/">

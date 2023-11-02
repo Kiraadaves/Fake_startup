@@ -1,7 +1,7 @@
 import { useState} from 'react';
 
 
-const Dropdown = ({theme}) => {
+const Dropdown = ({theme, light}) => {
   
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -9,7 +9,7 @@ const Dropdown = ({theme}) => {
     }
   return (
     
-      <div className={`${theme ? "light" : "dark"}`}>
+      <div className={`${theme === light ? "light" : "dark"}`}>
         <button
           onClick={handleOpen}
           className="flex gap-2 items-center border py-2 shadow-lg rounded-lg px-7 "

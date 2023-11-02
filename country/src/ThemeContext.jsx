@@ -1,19 +1,15 @@
-import { createContext, useState } from "react";
-
-export const ThemeContext = createContext();
-
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(true);
-  const handleTheme = () => {
-    setTheme(!theme);
-  };
-  console.log(theme, "count");
-
-  const contextValue = { theme, handleTheme };
-  return (
-    <ThemeContext.Provider value={contextValue}>
-      {children}
-    </ThemeContext.Provider>
-  );
+export const dark = {
+  name: "dark-theme",
+  colors: {
+    background: "#202c37",
+    text: "hsl(0, 0 %, 100 %)",
+  },
 };
-// eslint-disable-next-line react-refresh/only-export-components
+
+export const light = {
+  name: "light-theme",
+  colors: {
+    background: "#fafafa",
+    text: "hsl(200, 15 %, 8 %)",
+  },
+};

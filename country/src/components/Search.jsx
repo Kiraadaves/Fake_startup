@@ -1,10 +1,10 @@
 import Dropdown from "./Dropdown";
 
-const Search = ({value, theme, handleSearch}) => {
+const Search = ({value, theme, handleSearch, light}) => {
   
     
     return (
-      <div className={` px-20 relative mt-12`}>
+      <div className={` ${theme === light ? "light" : "dark"} px-20 relative mt-12`}>
         <form onSubmit={(e) => e.preventDefault()} className="flex items-center border md:w-1/3 rounded-lg">
           <button
             className="px-4 py-2  text-[#858585] rounded-lg  focus:outline-none"
@@ -34,7 +34,7 @@ const Search = ({value, theme, handleSearch}) => {
           />
             </form>
             <div className={`absolute right-20 top-0  `}>
-          <Dropdown theme={theme} />
+          <Dropdown theme={theme} light={light} />
             </div>
       </div>
     );

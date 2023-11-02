@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import ErrorPage from './error-page.jsx';
 import Details from './components/Details.jsx';
-import { ThemeProvider } from './ThemeContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,9 +15,9 @@ const router = createBrowserRouter([
   {
     path: "/details/:name",
     element: (
-      <ThemeProvider>
+      
         <Details className=""/>
-      </ThemeProvider>
+      
     ),
     errorElement: <ErrorPage />,
   },
@@ -26,8 +25,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
+    
       <RouterProvider router={router} />
-    </ThemeProvider>
+  
   </React.StrictMode>
 );
